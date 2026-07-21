@@ -1,0 +1,37 @@
+{
+    "name": "todo-rest-api",
+    "version": "1.0.0",
+    "description": "REST API for Todo application using Express and TypeScript",
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "type-check": "tsc --noEmit"
+    },
+    "keywords": [
+        "express",
+        "typescript",
+        "rest-api",
+        "todo"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^5.1.0",
+        "express-validator": "^7.2.1",
+        "helmet": "^8.1.0",
+        "morgan": "^1.10.1"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.6",
+        "@types/morgan": "^1.9.10",
+        "@types/node": "^24.2.0",
+        "nodemon": "^3.1.10",
+        "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.9.2"
+    }
+}
