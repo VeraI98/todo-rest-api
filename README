@@ -1,0 +1,7 @@
+# todo-rest-api
+
+1. Design and implement RESTful routes following industry standards
+2. Create a clean, maintainable route structure
+3. Implement proper HTTP status codes and response patterns
+4. Add comprehensive input validation and error handling
+5. Test your API endpoints thoroughly
