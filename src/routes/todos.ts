@@ -1,62 +1,52 @@
 import { Router } from "express";
-import { todoController } from "@/controllers/todoController";
+import { todoController } from "../controllers/todoController";
 import {
-    validateCreateTodo,
-    validateUpdateTodo,
-    validateTodoId,
-    validateTodoQuery,
-    validateAndHandle,
-} from "@/middleware/validation";
+  validateCreateTodo,
+  validateUpdateTodo,
+  validateReplaceTodo,
+  validateTodoId,
+  validateTodoQuery,
+  validateAndHandle,
+} from "../middleware/validation";
 
 const router = Router();
 
 router.get(
-    "/",
-    validateAndHandle(validateTodoQuery),
-    todoController.getAllTodos
+  "/",
+  validateAndHandle(validateTodoQuery),
+  todoController.getAllTodos,
 );
+
+router.get("/stats", todoController.getTodoStats);
 
 router.get(
-    "/stats",
-    todoController.getTodoStats
+  "/:id",
+  validateAndHandle(validateTodoId),
+  todoController.getTodoById,
 );
-
-
-router.get(
-    "/:id",
-    validateAndHandle(validateTodoId),
-    todoController.getTodoById
-);
-
 
 router.post(
-    "/",
-    validateAndHandle(validateCreateTodo),
-    todoController.createTodo
+  "/",
+  validateAndHandle(validateCreateTodo),
+  todoController.createTodo,
 );
 
 router.put(
-    "/:id",
-    validateAndHandle([
-        ...validateTodoId,
-        ...validateUpdateTodo,
-    ]),
-    todoController.updateTodo
+  "/:id",
+  validateAndHandle([...validateTodoId, ...validateReplaceTodo]),
+  todoController.updateTodo,
 );
 
 router.patch(
-    "/:id",
-    validateAndHandle([
-        ...validateTodoId,
-        ...validateUpdateTodo,
-    ]),
-    todoController.patchTodo
+  "/:id",
+  validateAndHandle([...validateTodoId, ...validateUpdateTodo]),
+  todoController.patchTodo,
 );
 
 router.delete(
-    "/:id",
-    validateAndHandle(validateTodoId),
-    todoController.deleteTodo
+  "/:id",
+  validateAndHandle(validateTodoId),
+  todoController.deleteTodo,
 );
 
 export default router;
